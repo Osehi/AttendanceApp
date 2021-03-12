@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "996178588045",
+    "project_id": "registernow-a1a8e",
+    "storage_bucket": "registernow-a1a8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996178588045:android:d0fc69c57145e1d2e5cdc4",
+        "android_client_info": {
+          "package_name": "com.polish.registernow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996178588045-1gka9mu8neapl14i6rstogo7sutfv26u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polish.registernow",
+            "certificate_hash": "18588f361104965922b7b55493a39cddc467fde2"
+          }
+        },
+        {
+          "client_id": "996178588045-hig5mm05rbmo08ci1acud39ogvpvcllp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1VeUSykg_fBQc-PMFbaAC0f2NFZCbMow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996178588045-hig5mm05rbmo08ci1acud39ogvpvcllp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
