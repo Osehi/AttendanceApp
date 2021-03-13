@@ -15,6 +15,7 @@
     <string name="fragment_register_gender">Gender</string>
     <string name="fragment_register_password">Password</string>
     <string name="fragment_register_register">Register</string>
+    <string name="dialog_progress">Please wait…</string>
 
 
 </resources>
