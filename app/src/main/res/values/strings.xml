@@ -13,6 +13,8 @@
     <string name="fragment_register_email">Email</string>
     <string name="fragment_register_phonenumber">Phone Number</string>
     <string name="fragment_register_gender">Gender</string>
+    <string name="fragment_register_password">Password</string>
+    <string name="fragment_register_register">Register</string>
 
 
 </resources>
