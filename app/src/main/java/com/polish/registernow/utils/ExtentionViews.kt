@@ -1,6 +1,7 @@
 package com.polish.registernow.utils
 
 import android.app.Dialog
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.polish.registernow.R
@@ -12,6 +13,9 @@ fun Fragment.navigate(id:Int){
     findNavController().navigate(id)
 }
 
+/**
+ * to show progressbar
+ */
 fun Fragment.showProgressBar(progresDialog:Dialog){
     // the dialog must have been initialized where it has been called for use
     // next inflate the layout.
@@ -22,5 +26,9 @@ fun Fragment.showProgressBar(progresDialog:Dialog){
 
 fun Fragment.hideProgressBar(progressDialog:Dialog){
     progressDialog.dismiss()
+}
+
+fun Fragment.showToast(msg:String){
+    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
 }
 
