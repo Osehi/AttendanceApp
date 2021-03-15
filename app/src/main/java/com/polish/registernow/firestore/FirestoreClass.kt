@@ -9,6 +9,7 @@ import com.google.firebase.firestore.SetOptions
 import com.polish.registernow.RegisterFragment
 import com.polish.registernow.constants.Constants
 import com.polish.registernow.model.User
+import com.polish.registernow.utils.removeProgressBar
 
 class FirestoreClass {
 
@@ -19,7 +20,7 @@ class FirestoreClass {
     /**
      * save a registered user to firestore
      */
-    fun registerUser(context:Context, userInfo:User){
+    fun registerUser(context:Context, userInfo:User, progressBarTake:Dialog){
         // the collection name is "users
         mFirestore.collection(Constants.USERS)
             .document(userInfo.id)
@@ -28,10 +29,13 @@ class FirestoreClass {
             .addOnSuccessListener {
             // call the function that will remove the progress bar and show a success message
                 // hide the progress bar
+                removeProgressBar(progressBarTake)
                 // and show toast successful
+
             }
             .addOnFailureListener {e ->
                 // hide progessbar
+                removeProgressBar(progressBarTake)
                 Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
             }
     }

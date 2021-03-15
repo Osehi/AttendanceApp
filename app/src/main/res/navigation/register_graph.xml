@@ -17,4 +17,9 @@
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register"
         />
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.polish.registernow.AttendanceFragment"
+        android:label="fragment_attendance"
+        tools:layout="@layout/fragment_attendance" />
 </navigation>

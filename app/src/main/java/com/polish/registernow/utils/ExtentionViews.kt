@@ -32,3 +32,14 @@ fun Fragment.showToast(msg:String){
     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
 }
 
+/**
+ * for normal use of dialog
+ */
+fun displayProgressBar(progrzBar:Dialog){
+    progrzBar.setContentView(R.id.dialog_progress_pb)
+    progrzBar.show()
+}
+fun removeProgressBar(progrzBar: Dialog){
+    progrzBar.dismiss()
+}
+

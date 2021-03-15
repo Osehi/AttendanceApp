@@ -12,22 +12,25 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.polish.registernow.constants.Constants
 import com.polish.registernow.databinding.FragmentRegisterBinding
 import com.polish.registernow.firestore.FirestoreClass
 import com.polish.registernow.model.User
-import com.polish.registernow.utils.hideProgressBar
-import com.polish.registernow.utils.showProgressBar
-import com.polish.registernow.utils.showToast
+import com.polish.registernow.utils.*
 
 
 class RegisterFragment : Fragment() {
     val TAG = "REGISTER_FRAGMENT"
     // declare views
     lateinit var registerButton: Button
+    // firestore componenet
+    lateinit var nFirestore: FirebaseFirestore
 
     // declare dialog
     lateinit var progressBar:Dialog
+    lateinit var testProgressBar:Dialog
 
     // initialize the view binding
     private var _binding:FragmentRegisterBinding? = null
@@ -46,6 +49,8 @@ class RegisterFragment : Fragment() {
         val view = binding.root
         // initialize views
         registerButton = binding.fragmentRegisterRegisteBtn
+        // initialize the firestore here
+        nFirestore = FirebaseFirestore.getInstance()
 
         // add setOnClicklistener to register button
         registerButton.setOnClickListener {
@@ -55,6 +60,7 @@ class RegisterFragment : Fragment() {
 
         // initialize the dialog
         progressBar = Dialog(requireContext())
+        testProgressBar = Dialog(requireContext())
 
         return view
     }
@@ -81,7 +87,7 @@ class RegisterFragment : Fragment() {
                 false
             }
             TextUtils.isEmpty(binding.fragmentRegisterPasswordEt.text.toString().trim{it <= ' '}) -> {
-                showToast("Please enter phone number")
+                showToast("Please enter password")
                 false
             } else -> {
                 showToast("Your details are valid")
@@ -101,9 +107,10 @@ class RegisterFragment : Fragment() {
         if(validateRegisterDetails()){
             // show the progress dialog
             showProgressBar(progressBar)
+
             // receive the entry
-            val email = binding.fragmentRegisterEmailEt.text.toString().trim{it <= ' '}
-            val password = binding.fragmentRegisterPasswordEt.toString().trim {it <= ' '}
+            val email = binding.fragmentRegisterEmailEt.text.toString().trim()
+            val password = binding.fragmentRegisterPasswordEt.text.toString().trim()
             Log.d(TAG, "this is email:$email")
             // create an instance of firebaseAuth and register a user with email and password
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -127,11 +134,25 @@ class RegisterFragment : Fragment() {
                                 gender
                             )
                             // save user info to database
-                            FirestoreClass().registerUser(requireContext(),user)
+//                            FirestoreClass().registerUser(requireContext(),user, testProgressBar)
+                            nFirestore.collection(Constants.USERS)
+                                    .document(user.id)
+                                    .set(user, SetOptions.merge())
+                                    .addOnSuccessListener {
+                                        hideProgressBar(progressBar)
+                                        showToast("You have registered successfully")
+                                        navigate(R.id.loginFragment)
+                                    }
+                                    .addOnFailureListener { e ->
+                                        hideProgressBar(progressBar)
+                                        showToast("${e.message}")
+                                    }
+
                         } else {
                             showToast("${task.exception!!.message.toString()}")
                             Log.d(TAG, "${task.exception!!.message.toString()}")
                             hideProgressBar(progressBar)
+//                            removeProgressBar(testProgressBar)
                         }
                     }
         }
@@ -141,7 +162,7 @@ class RegisterFragment : Fragment() {
         fun userRegistrationSuccess(){
             // hide the progress bar
             hideProgressBar(progressBar)
-
+//                removeProgressBar(testProgressBar)
             showToast("You are registered successfully")
             // so what do you want to do with this screen after successful registration
             // should you just remain on the register

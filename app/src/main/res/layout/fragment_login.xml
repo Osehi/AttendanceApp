@@ -101,11 +101,11 @@
             <EditText
                 android:id="@+id/fragment_login_password_et"
                 android:imeOptions="actionNext"
-                android:inputType="textPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="@android:color/transparent"
+                android:inputType="textPassword"
                 android:hint="@string/activity_main_password"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"

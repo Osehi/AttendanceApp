@@ -16,6 +16,11 @@
     <string name="fragment_register_password">Password</string>
     <string name="fragment_register_register">Register</string>
     <string name="dialog_progress">Please wait…</string>
+    <string name="attendance_list">Attendance List</string>
+    <string name="item_attendance_firstname">FirstName</string>
+    <string name="item_attendance_lastname">LasrName</string>
+    <string name="item_attendance_email">Email</string>
+    <string name="item_attendance_phonenumber">Phone Number</string>
 
 
 </resources>
