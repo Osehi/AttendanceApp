@@ -305,6 +305,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:button="@null"
+            android:layout_marginStart="3dp"
             android:background="@drawable/gender_drawable_tab_selector"
             android:layout_weight="1"
             android:gravity="center"

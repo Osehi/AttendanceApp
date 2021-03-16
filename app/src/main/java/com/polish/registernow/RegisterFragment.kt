@@ -111,7 +111,7 @@ class RegisterFragment : Fragment() {
             // receive the entry
             val email = binding.fragmentRegisterEmailEt.text.toString().trim()
             val password = binding.fragmentRegisterPasswordEt.text.toString().trim()
-            Log.d(TAG, "this is email:$email")
+
             // create an instance of firebaseAuth and register a user with email and password
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
@@ -150,9 +150,8 @@ class RegisterFragment : Fragment() {
 
                         } else {
                             showToast("${task.exception!!.message.toString()}")
-                            Log.d(TAG, "${task.exception!!.message.toString()}")
                             hideProgressBar(progressBar)
-//                            removeProgressBar(testProgressBar)
+
                         }
                     }
         }

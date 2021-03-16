@@ -163,6 +163,8 @@
         android:textColor="@color/green"
         android:layout_marginStart="4dp"
         android:text="@string/activity_main_register"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/activity_main_dont_have_account_tv"

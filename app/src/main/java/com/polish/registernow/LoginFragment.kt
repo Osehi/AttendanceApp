@@ -89,8 +89,7 @@ class LoginFragment : Fragment() {
             // get the input
             val email = binding.activityMainEmailEt.text.toString().trim()
             val password = binding.fragmentLoginPasswordEt.text.toString().trim()
-            Log.d(TAG, "in login email:$email")
-            Log.d(TAG, "in login password:$password")
+
             // login using firebase auth
             Firebase.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
